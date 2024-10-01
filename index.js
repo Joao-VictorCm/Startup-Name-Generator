@@ -5701,4 +5701,6 @@ const noun = [
 ];
 
 var adjRandom = adj[Math.floor(Math.random() * adj.length)]
-console.log(adjRandom)
+var nounRandom = noun[Math.floor(Math.random() * noun.length)]
+
+console.log(adjRandom + " + " +nounRandom)
