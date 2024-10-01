@@ -15,24 +15,18 @@ app.use(express.static('public', {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-
-  const data = {
-   ano: new Date().getUTCFullYear()
-  }
-
-  res.render("index.ejs", data)
+  res.render("index.ejs")
 });
 
 app.post("/submit", (req, res) => {
-  //Etapa 2 - Faça a funcionalidade de geração de nome funcionar
-  //Dica: Quando o botão "Gerar Nome" em index.ejs for clicado, ele deverá acessar esta rota.
-  //Então:
+  const adjRandom = adj[Math.floor(Math.random() * adj.length)]
+  const nounRandom = noun[Math.floor(Math.random() * noun.length)]
 
-
-  //1. Você deve escolher aleatoriamente um adjetivo de const "adj" e um substantivo de const "substantivo",
-  //role para baixo para ver os dois arrays.
-  //2. Envie o index.ejs como resposta e adicione o adjetivo e o substantivo ao res.render
-  //3. Teste para garantir que as palavras aleatórias sejam exibidas no elemento h1 em index.ejs
+   res.render("index.ejs",{
+    adjective: adjRandom,
+    noun: nounRandom,
+   })
+   
 });
 
 app.listen(port, () => {
@@ -5700,7 +5694,3 @@ const noun = [
   "zucchini",
 ];
 
-var adjRandom = adj[Math.floor(Math.random() * adj.length)]
-var nounRandom = noun[Math.floor(Math.random() * noun.length)]
-
-console.log(adjRandom + " + " +nounRandom)
